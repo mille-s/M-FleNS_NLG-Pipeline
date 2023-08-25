@@ -29,7 +29,7 @@ In each subfolder of the */content/FORGe/structures* folder, intermediate repres
 ## Input specifications
 TBD.
 
-Sample input structures are provided in the */content/FORGe/structures/00-PredArg* folder.
+A sample input file for English is provided: */content/FORGe/201005_dev_4tr_sml_EN.conll*.
 
 ## Parameters
 There are three types of parameters: (1) language, (2) grouping or not of modules, and (3) system assignment for each module.
