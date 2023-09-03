@@ -15,7 +15,7 @@ This generation pipeline takes predicate-argument structures as input and return
 - **Inflection and morphological interactions resolution**: retrieves/generates the final form of the words.
 
 ## Quick start for running pipeline on Colab
-1. Go to M-FleNS-pipe_v2.0.ipynb and open the project in Colab.
+1. Go to M-FleNS-pipe.ipynb and open the project in Colab.
 2. Run the first two cells to download and unzip the working folder, and install java 8 on the Colab server.
 3. Set parameters: **Edit the parameters** of the third cell if needed (see Parameters below) and run the third cell.
 4. Static parameters and functions: Run the fourth cell.
