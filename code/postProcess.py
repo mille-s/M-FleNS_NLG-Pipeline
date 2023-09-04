@@ -26,7 +26,7 @@ without_underscores = 'yes'
 
 #read filepaths
 #list_filepaths = glob.glob(os.path.join(path, '*.conll'))
-list_filepaths = glob.glob(os.path.join(output_folder, '*_out.txt'))
+list_filepaths = glob.glob(os.path.join(output_folder, '*.txt'))
 
 def uppercase(match):
   return(match.group(1).upper())
