@@ -66,9 +66,9 @@ def examine_logs(path, count_perLevel):
       lines = fd.readlines()
       # Look for errors in log files and store how many of them in dico
       # E.G. 'DMorphLin': {'train_1triple_ga_utf8_0000-0449': 2, 'train_1triple_ga_utf8_0900-1349': 1, 'train_1triple_ga_utf8_0450-0899': 0}
-      input_id = 0
       for line in lines:
         if line.startswith('Processing file '):
+          input_id = 0
           input_name = line.split('Processing file ')[1].split('__')[0]
           dico_log_errors[level_name][input_name] = []
         if re.search('[Ee]rror', line):
