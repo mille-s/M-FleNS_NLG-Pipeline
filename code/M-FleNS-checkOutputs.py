@@ -110,8 +110,6 @@ if str_count_perLevel == txt_count_perLevel:
 else:
   print('Problem with number of texts!\n----')
   fo.write('Problem with number of texts!\n----\n')
-  print(error_count_perLevel)
-  fo.write(str(error_count_perLevel)+'\n')
 
 print('Inputs:  ' + str(sum(str_count_perLevel)))
 fo.write('Inputs:  ' + str(sum(str_count_perLevel))+'\n')
