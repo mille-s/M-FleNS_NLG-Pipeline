@@ -100,8 +100,10 @@ else:
   print('Error(s) found in log files!\n----')
   fo.write('Error(s) found in log files!\n----\n')
   print(error_count_perLevel)
-  fo.write(str(error_count_perLevel)+'\n')
-
+  # fo.write(str(error_count_perLevel)+'\n')
+  for error_per_level in error_count_perLevel:
+    print(error_per_level)
+    
 print('\n')
 fo.write('\n')
 
