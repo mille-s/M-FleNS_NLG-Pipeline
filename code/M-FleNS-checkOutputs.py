@@ -97,12 +97,14 @@ if len(error_count_perLevel) == 0:
   print('Log files OK!\n----')
   fo.write('Log files OK!\n----\n')
 else:
-  print('Error(s) found in log files!\n----')
-  fo.write('Error(s) found in log files!\n----\n')
-  print(error_count_perLevel)
+  print('Problem in log files!\n----')
+  fo.write('Problem in log files!\n----\n')
+  # print(error_count_perLevel)
   # fo.write(str(error_count_perLevel)+'\n')
   for error_per_level in error_count_perLevel:
     print(error_per_level)
+    fo.write(error_per_level)
+    fo.write('\n')
     
 print('\n')
 fo.write('\n')
