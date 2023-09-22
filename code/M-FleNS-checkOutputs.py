@@ -11,6 +11,8 @@ import re
 input_folder = sys.argv[1]
 output_folder = sys.argv[2]
 log_folder = sys.argv[3]
+temp_input_folder_morph = sys.argv[4]
+language = sys.argv[5]
 
 str_count_perLevel = []
 txt_count_perLevel = []
@@ -54,6 +56,8 @@ def examine_files(path, count_perLevel):
           if re.search('\.txt', new_file_path):
             count = count_txt(new_file_path)
             count_perLevel.append(count)
+            if language == "GA":
+              shutil.copy(new_file_path, temp_input_folder_morph)
 
 def examine_logs(path, count_perLevel):
   folder_content = os.listdir(path)
