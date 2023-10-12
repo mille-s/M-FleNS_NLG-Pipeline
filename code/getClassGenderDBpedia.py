@@ -132,9 +132,15 @@ band_subj = []
 female_obj = []
 person_obj = []
 band_obj = []
-if len(subj_that_need_type) > 0:
+if len(subj_that_need_type) == 0:
+  print('No subjects to query.')
+else:
+  print('Querying DBpedia for subjects of input triples...')
   female_subj, person_subj, band_subj = createListTypes(subj_that_need_type, bar)
-if len(obj_that_need_type) > 0:
+if len(obj_that_need_type) == 0:
+  print('\nNo objects to query.')
+else:
+  print('\nQuerying DBpedia for objects of input triples...')
   female_obj, person_obj, band_obj = createListTypes(obj_that_need_type, bar)
 
 if len(band_subj) > 0:
