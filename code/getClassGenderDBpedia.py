@@ -128,6 +128,9 @@ update_file_class_members('/content/triples2predArg/classMembership/female_obj_a
 update_file_class_members('/content/triples2predArg/classMembership/person_sub_all_validated.txt', person_subj)
 update_file_class_members('/content/triples2predArg/classMembership/person_obj_all_validated.txt', person_obj)
 
+update_file_class_members('/content/triples2predArg/classMembership/all_subValues.txt', list_subj)
+update_file_class_members('/content/triples2predArg/classMembership/all_objValues.txt', list_obj)
+
 print('Band-sbj: '+str(band_subj))
 print('Band-obj: '+str(band_obj))
 print('Fem-sbj: '+str(female_subj))
