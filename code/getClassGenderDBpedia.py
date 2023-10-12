@@ -9,6 +9,12 @@ import os
 import re
 import codecs
 import json
+import progressbar
+
+bar = ''
+def createProgressBar(bar, max):
+  bar = progressbar.ProgressBar(max_value=max)
+  return(bar)
 
 filepath_subj = sys.argv[1]
 filepath_obj = sys.argv[2]
@@ -95,12 +101,14 @@ def get_types_of_entity(entity_untyped):
   
   # return(results["results"]["bindings"])
   
-def createListTypes(entities_that_need_type):
+def createListTypes(entities_that_need_type, bar):
   """ For each of the entities that need a type, get the types"""
   female_list = []
   person_list = []
   band_list = []
-  for entity_untyped in entities_that_need_type:
+  bar = createProgressBar(bar, len(entities_that_need_type)-1)
+  for count, entity_untyped in enumerate(entities_that_need_type):
+    bar.update(count)
     results_type = get_types_of_entity(entity_untyped)
     entity_clean = entity_untyped.rsplit('_(', 1)[0]
     x = 0
@@ -118,19 +126,36 @@ def createListTypes(entities_that_need_type):
 subj_that_need_type = fillListNeedType(list_subj)
 obj_that_need_type = fillListNeedType(list_obj)
 
-female_subj, person_subj, band_subj = createListTypes(subj_that_need_type)
-female_obj, person_obj, band_obj = createListTypes(obj_that_need_type)
+female_subj = []
+person_subj = []
+band_subj = []
+female_obj = []
+person_obj = []
+band_obj = []
+if len(subj_that_need_type) > 0:
+  female_subj, person_subj, band_subj = createListTypes(subj_that_need_type, bar)
+if len(obj_that_need_type) > 0:
+  female_obj, person_obj, band_obj = createListTypes(obj_that_need_type, bar)
 
-update_file_class_members('/content/triples2predArg/classMembership/band_sub_all_validated.txt', band_subj)
-update_file_class_members('/content/triples2predArg/classMembership/band_obj_all_validated.txt', band_obj)
-update_file_class_members('/content/triples2predArg/classMembership/female_sub_all_validated.txt', female_subj)
-update_file_class_members('/content/triples2predArg/classMembership/female_obj_all_validated.txt', female_obj)
-update_file_class_members('/content/triples2predArg/classMembership/person_sub_all_validated.txt', person_subj)
-update_file_class_members('/content/triples2predArg/classMembership/person_obj_all_validated.txt', person_obj)
+if len(band_subj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/band_sub_all_validated.txt', band_subj)
+if len(band_obj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/band_obj_all_validated.txt', band_obj)
+if len(female_subj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/female_sub_all_validated.txt', female_subj)
+if len(female_obj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/female_obj_all_validated.txt', female_obj)
+if len(person_subj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/person_sub_all_validated.txt', person_subj)
+if len(person_obj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/person_obj_all_validated.txt', person_obj)
 
-update_file_class_members('/content/triples2predArg/classMembership/all_subValues.txt', list_subj)
-update_file_class_members('/content/triples2predArg/classMembership/all_objValues.txt', list_obj)
+if len(list_subj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/all_subValues.txt', list_subj)
+if len(list_obj) > 0:
+  update_file_class_members('/content/triples2predArg/classMembership/all_objValues.txt', list_obj)
 
+print('\n')
 print('Band-sbj: '+str(band_subj))
 print('Band-obj: '+str(band_obj))
 print('Fem-sbj: '+str(female_subj))
