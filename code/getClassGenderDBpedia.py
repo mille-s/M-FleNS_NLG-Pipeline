@@ -41,7 +41,7 @@ def fillListNeedType(list_entities):
   """ Create a list with all entities that need a type """
   list_need_type = []
   for entity_name in list_entities:
-    if not re.search(' ', entity_name) and not entity_name.isnumeric() and entity_name[0].isupper() and entity_name not in list_need_type:
+    if not re.search(' ', entity_name) and not re.search('\|', entity_name) and not entity_name.isnumeric() and entity_name[0].isupper() and entity_name not in list_need_type:
       list_need_type.append(entity_name)
   return(list_need_type)
     
