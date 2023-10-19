@@ -93,6 +93,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' ar bhí ', ' a bhí ', text)[0]
     text = re.subn(' an ann ', ' air ', text)[0]
     text = re.subn(' an sé ', ' an é ', text)[0]
+    text = re.subn('([0-9]+\s*)meters', '\g<1>méadar', text)[0]
   # Erroneous "type = parenthetical" fix
   if re.search('\) \(', text):
     print('!!! Failed parenthesis generation in input '+str(count)+' (fixed)')
@@ -104,7 +105,7 @@ def clean_outputs (text, count, underscores):
   text = re.subn('^([a-z])', uppercase, text)[0]
   # replace "a" by "an" before vowels (should restrict to English)
   if language == 'EN':
-    text = re.subn(' a ([aeio])', ' an \g<1>', text)[0]
+    text = re.subn(' a ([aeioAEIO])', ' an \g<1>', text)[0]
   # find generation fails (we introduce [..] or [...] or [......] when a sentence cannot be generated
   if re.search('\[\.\.', text):
     print('!!! Failed sentence generation in input '+str(count))
