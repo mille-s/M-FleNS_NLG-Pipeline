@@ -94,6 +94,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' an ann ', ' air ', text)[0]
     text = re.subn(' an sé ', ' an é ', text)[0]
     text = re.subn('([0-9]+\s*)meters', '\g<1>méadar', text)[0]
+    text = re.subn('([0-9]+_)meters', '\g<1>méadar', text)[0]
   # Erroneous "type = parenthetical" fix
   if re.search('\) \(', text):
     print('!!! Failed parenthesis generation in input '+str(count)+' (fixed)')
