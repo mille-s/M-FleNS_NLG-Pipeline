@@ -424,7 +424,7 @@ def process_files_FORGe(module_object):
   rename_files(FORGe_input_folder, module_object.output)
 
   # Run generator
-  print('  Running '+str(module_object.grammars))
+  print('  Running '+str(module_object.grammars)+' on files in '+str(module_object.input_folder)+'...')
   with open(os.path.join(log_folder, 'log.txt'), 'a') as logfile:
     #proc = subprocess.Popen(['java', '-Xmx1g', '-jar', 'buddy-core-0.1.1-en.jar', os.path.join(surfOutTmp,f), '-o', deepOutTmp], stdout = subprocess.PIPE, universal_newlines=True)
     proc = subprocess.run(['java', '-Xmx1g', '-jar', path_MATE, path_props, path_props_levels], stdout = subprocess.PIPE, universal_newlines=True)
