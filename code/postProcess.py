@@ -110,9 +110,17 @@ def clean_outputs (text, count, underscores):
   # find generation fails (we introduce [..] or [...] or [......] when a sentence cannot be generated
   if re.search('\[\.\.', text):
     print('!!! Failed sentence generation in input '+str(count))
-  # remove space before commas and dots
+  # replace underscores by spaces
+  if underscores == 'yes':
+    pass
+  else:
+    text = re.subn('_', ' ', text)[0]
+  # remove space before commas,  dots, etc.
   text = re.subn(' ,', ',', text)[0]
   text = re.subn(' \.', '.', text)[0]
+  text = re.subn(" '", "'", text)[0]
+  text = re.subn(' \)', ')', text)[0]
+  text = re.subn('\( ', '(', text)[0]
   # replace double dots by single ones
   while re.search('\.\.', text):
     text = re.subn('\.\.', '.', text)[0]
@@ -122,11 +130,6 @@ def clean_outputs (text, count, underscores):
   # Remove initial spaces
   while re.search('^ ', text):
     text = re.subn('^ ', '', text)[0]
-  # replace underscores by spaces
-  if underscores == 'yes':
-    pass
-  else:
-    text = re.subn('_', ' ', text)[0]
   # New 2023: replace double spaces by single ones
   while re.search('  ', text):
     text = re.subn('  ', ' ', text)[0]
