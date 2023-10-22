@@ -107,6 +107,7 @@ def clean_outputs (text, count, underscores):
   # replace "a" by "an" before vowels (should restrict to English)
   if language == 'EN':
     text = re.subn(' a ([aeioAEIO])', ' an \g<1>', text)[0]
+    text = re.subn(" 's ", "'s ", text)[0]
   # find generation fails (we introduce [..] or [...] or [......] when a sentence cannot be generated
   if re.search('\[\.\.', text):
     print('!!! Failed sentence generation in input '+str(count))
@@ -118,7 +119,6 @@ def clean_outputs (text, count, underscores):
   # remove space before commas,  dots, etc.
   text = re.subn(' ,', ',', text)[0]
   text = re.subn(' \.', '.', text)[0]
-  text = re.subn(" '", "'", text)[0]
   text = re.subn(' \)', ')', text)[0]
   text = re.subn('\( ', '(', text)[0]
   # replace double dots by single ones
