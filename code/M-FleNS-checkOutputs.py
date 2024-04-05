@@ -75,7 +75,7 @@ def examine_logs(path, count_perLevel):
           input_id = 0
           input_name = line.split('Processing file ')[1].split('__')[0]
           dico_log_errors[level_name][input_name] = []
-        if  line.startswith('Processing graph output'):
+        if  line.startswith('Processing graph ConllSentence'):
           input_id += 1
         if re.search('[Ee]rror', line):
           # The error message appears on the line after 'Processing graph output', so we append n-1
