@@ -121,6 +121,7 @@ def clean_outputs (text, count, underscores):
   text = re.subn(' \.', '.', text)[0]
   text = re.subn(' \)', ')', text)[0]
   text = re.subn('\( ', '(', text)[0]
+  text = re.subn(' ([0-9]+)\.0 kilogram', ' \g<1>kg', text)[0]
   # replace double dots by single ones
   while re.search('\.\.', text):
     text = re.subn('\.\.', '.', text)[0]
