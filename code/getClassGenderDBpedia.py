@@ -145,22 +145,22 @@ else:
   female_obj, person_obj, band_obj = createListTypes(obj_that_need_type, bar)
 
 if len(band_subj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/band_sub_all_validated.txt'), band_subj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'band_sub_all_validated.txt'), band_subj)
 if len(band_obj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/band_obj_all_validated.txt'), band_obj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'band_obj_all_validated.txt'), band_obj)
 if len(female_subj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/female_sub_all_validated.txt'), female_subj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'female_sub_all_validated.txt'), female_subj)
 if len(female_obj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/female_obj_all_validated.txt'), female_obj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'female_obj_all_validated.txt'), female_obj)
 if len(person_subj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/person_sub_all_validated.txt'), person_subj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'person_sub_all_validated.txt'), person_subj)
 if len(person_obj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/person_obj_all_validated.txt'), person_obj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'person_obj_all_validated.txt'), person_obj)
 
 if len(list_subj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/all_subValues.txt'), list_subj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'all_subValues.txt'), list_subj)
 if len(list_obj) > 0:
-  update_file_class_members(os.path.join(root_folder, 'triples2predArg/classMembership/all_objValues.txt'), list_obj)
+  update_file_class_members(os.path.join(root_folder, 'triples2predArg', 'classMembership', 'all_objValues.txt'), list_obj)
 
 print('\n')
 print('Band-sbj: '+str(band_subj))
