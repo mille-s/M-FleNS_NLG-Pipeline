@@ -111,22 +111,22 @@ def clean_outputs (text, count, underscores):
   # French post-processing
   if language == 'FR':
     # Conjunctions/Prepositions (+determiner)
-    text = re.subn(' de ([haeiouHAEIOU])', ' d'\g<1>', text)[0]
-    text = re.subn(' du ([haeiouHAEIOU])', ' de l'\g<1>', text)[0]
-    text = re.subn(' que ([haeiouHAEIOU])', ' qu'\g<1>', text)[0]
-    text = re.subn(' jusque ([aeiouAEIOU])', ' jusqu'\g<1>', text)[0]
+    text = re.subn(' de ([haeiouHAEIOU])', " d'\g<1>", text)[0]
+    text = re.subn(' du ([haeiouHAEIOU])', " de l'\g<1>", text)[0]
+    text = re.subn(' que ([haeiouHAEIOU])', " qu'\g<1>", text)[0]
+    text = re.subn(' jusque ([aeiouAEIOU])', " jusqu'\g<1>", text)[0]
     # Determiners/pronouns
-    text = re.subn(' l[ae] ([aeiouAEIOU])', ' l'\g<1>', text)[0]
-    text = re.subn(' ça était', ' c'était', text)[0]
-    text = re.subn(' ça est', ' c'est', text)[0]
+    text = re.subn(' l[ae] ([aeiouAEIOU])', " l'\g<1>", text)[0]
+    text = re.subn(' ça était', " c'était", text)[0]
+    text = re.subn(' ça est', " c'est", text)[0]
     # Pronouns
     text = re.subn(' ce ([aeiouAEIOU])', ' cet \g<1>', text)[0]
-    text = re.subn(' je ([aeiouAEIOU])', ' j'\g<1>', text)[0]
-    text = re.subn(' me ([aeiouAEIOU])', ' m'\g<1>', text)[0]
-    text = re.subn(' te ([aeiouAEIOU])', ' t'\g<1>', text)[0]
-    text = re.subn(' se ([aeiouAEIOU])', ' s'\g<1>', text)[0]
+    text = re.subn(' je ([aeiouAEIOU])', " j'\g<1>", text)[0]
+    text = re.subn(' me ([aeiouAEIOU])', " m'\g<1>", text)[0]
+    text = re.subn(' te ([aeiouAEIOU])', " t'\g<1>", text)[0]
+    text = re.subn(' se ([aeiouAEIOU])', " s'\g<1>", text)[0]
     # Others
-    text = re.subn(' ne ([aeiouAEIOU])', ' n'\g<1>', text)[0]
+    text = re.subn(' ne ([aeiouAEIOU])', " n'\g<1>", text)[0]
     # Patches units
     text = re.subn('_meters', '_mètres', text)[0]
     text = re.subn(' meters', ' mètres', text)[0]
