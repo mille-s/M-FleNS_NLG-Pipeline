@@ -132,6 +132,11 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' meters', ' mètres', text)[0]
     text = re.subn('_kilometers', 'kilomètres', text)[0]
     text = re.subn(' kilometers', 'kilomètres', text)[0]
+    # Added after generating FR v0.1
+    text = re.subn('_metres', '_mètres', text)[0]
+    text = re.subn(' metres', ' mètres', text)[0]
+    text = re.subn('_kilometres', 'kilomètres', text)[0]
+    text = re.subn(' kilometres', 'kilomètres', text)[0]
     text = re.subn('_per_second', '_par_seconde', text)[0]
     text = re.subn(' per second', ' par seconde', text)[0]
     text = re.subn('_per_hour', '_heure', text)[0]
