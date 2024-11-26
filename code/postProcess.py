@@ -117,6 +117,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' jusque ([aeiouAEIOU])', " jusqu'\g<1>", text)[0]
     # Determiners/pronouns
     text = re.subn(' l[ae] ([aeiouAEIOU])', " l'\g<1>", text)[0]
+    text = re.subn('L[ae] ([aeiouAEIOU])', "L'\g<1>", text)[0]
     text = re.subn(' ça était', " c'était", text)[0]
     text = re.subn(' ça est', " c'est", text)[0]
     # Pronouns
