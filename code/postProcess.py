@@ -108,6 +108,41 @@ def clean_outputs (text, count, underscores):
   if language == 'EN':
     text = re.subn(' a ([aeioAEIO])', ' an \g<1>', text)[0]
     text = re.subn(" 's ", "'s ", text)[0]
+  # French post-processing
+  if language == 'FR':
+    # Conjunctions/Prepositions (+determiner)
+    text = re.subn(' de ([haeiouHAEIOU])', ' d'\g<1>', text)[0]
+    text = re.subn(' du ([haeiouHAEIOU])', ' de l'\g<1>', text)[0]
+    text = re.subn(' que ([haeiouHAEIOU])', ' qu'\g<1>', text)[0]
+    text = re.subn(' jusque ([aeiouAEIOU])', ' jusqu'\g<1>', text)[0]
+    # Determiners/pronouns
+    text = re.subn(' l[ae] ([aeiouAEIOU])', ' l'\g<1>', text)[0]
+    text = re.subn(' ça était', ' c'était', text)[0]
+    text = re.subn(' ça est', ' c'est', text)[0]
+    # Pronouns
+    text = re.subn(' ce ([aeiouAEIOU])', ' cet \g<1>', text)[0]
+    text = re.subn(' je ([aeiouAEIOU])', ' j'\g<1>', text)[0]
+    text = re.subn(' me ([aeiouAEIOU])', ' m'\g<1>', text)[0]
+    text = re.subn(' te ([aeiouAEIOU])', ' t'\g<1>', text)[0]
+    text = re.subn(' se ([aeiouAEIOU])', ' s'\g<1>', text)[0]
+    # Others
+    text = re.subn(' ne ([aeiouAEIOU])', ' n'\g<1>', text)[0]
+    # Patches units
+    text = re.subn('_meters', '_mètres', text)[0]
+    text = re.subn(' meters', ' mètres', text)[0]
+    text = re.subn('_kilometers', 'kilomètres', text)[0]
+    text = re.subn(' kilometers', 'kilomètres', text)[0]
+    text = re.subn('_per_second', '_par_seconde', text)[0]
+    text = re.subn(' per second', ' par seconde', text)[0]
+    text = re.subn('_per_hour', '_heure', text)[0]
+    text = re.subn(' per hour', ' heure', text)[0]
+    text = re.subn('_degrees', '_degrés', text)[0]
+    text = re.subn(' degrees', ' degrés', text)[0]
+    text = re.subn('_inhabitants', '_habitants', text)[0]
+    text = re.subn(' inhabitants', ' habitants', text)[0]
+    text = re.subn('_square', '_carrés', text)[0]
+    text = re.subn(' square', ' carrés', text)[0]
+    
   # find generation fails (we introduce [..] or [...] or [......] when a sentence cannot be generated
   if re.search('\[\.\.', text):
     print('!!! Failed sentence generation in input '+str(count))
