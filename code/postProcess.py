@@ -122,12 +122,12 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' ça est', " c'est", text)[0]
     # Pronouns
     text = re.subn(' ce ([aeiouAEIOU])', ' cet \g<1>', text)[0]
-    text = re.subn(' je ([aeiouAEIOU])', " j'\g<1>", text)[0]
-    text = re.subn(' me ([aeiouAEIOU])', " m'\g<1>", text)[0]
-    text = re.subn(' te ([aeiouAEIOU])', " t'\g<1>", text)[0]
-    text = re.subn(' se ([aeiouAEIOU])', " s'\g<1>", text)[0]
+    text = re.subn(' je ([aeiouyAEIOUY])', " j'\g<1>", text)[0]
+    text = re.subn(' me ([aeiouyAEIOUY])', " m'\g<1>", text)[0]
+    text = re.subn(' te ([aeiouyAEIOUY])', " t'\g<1>", text)[0]
+    text = re.subn(' se ([aeiouyAEIOUY])', " s'\g<1>", text)[0]
     # Others
-    text = re.subn(' ne ([aeiouAEIOU])', " n'\g<1>", text)[0]
+    text = re.subn(' ne ([aeiouyAEIOUY])', " n'\g<1>", text)[0]
     # Patches units
     text = re.subn('_meters', '_mètres', text)[0]
     text = re.subn(' meters', ' mètres', text)[0]
