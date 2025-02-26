@@ -97,6 +97,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn('^An ([aA])n([\s_])', ' An\g<2>', text)[0]
     # Remove det when the next NP is probably genitive (restricting to uppercase words to target nouns more safely, but we may be missing some cases this way ).
     text = re.subn(' an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' \g<1> \g<2> \g<3>', text)[0]
+    text = re.subn(' an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' \g<1>_\g<2>_\g<3>', text)[0]
     text = re.subn('([0-9]+\s*)meters', '\g<1>méadar', text)[0]
     text = re.subn('([0-9]+_)meters', '\g<1>méadar', text)[0]
     text = re.subn('([0-9]+\s*)minutes', '\g<1>nóiméad', text)[0]
