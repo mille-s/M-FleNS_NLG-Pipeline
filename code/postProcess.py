@@ -98,6 +98,9 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' an ([aA])n([\s_])', ' \g<1>n\g<2>', text)[0]
     text = re.subn('^An ([aA])n([\s_])', ' An\g<2>', text)[0]
     # Remove det when the next NP is probably genitive (restricting to uppercase words to target nouns more safely, but we may be missing some cases this way ).
+    # le+an - leis an (FORGe correctly produces that), but if we remove the "an" here, we need to revert "leis" to "le".
+    text = re.subn(' leis an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' le \g<1> \g<2> \g<3>', text)[0]
+    text = re.subn(' leis an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' le \g<1>_\g<2>_\g<3>', text)[0]
     text = re.subn(' an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' \g<1> \g<2> \g<3>', text)[0]
     text = re.subn(' an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' \g<1>_\g<2>_\g<3>', text)[0]
     text = re.subn('([0-9]+\s*)meters', '\g<1>méadar', text)[0]
