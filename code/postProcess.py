@@ -70,6 +70,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' ó [aA]n ', ' ón ', text)[0]
     text = re.subn(' ó [aA]n_', ' ón ', text)[0]
     text = re.subn(' sa [aA]n ', ' san ', text)[0]
+    text = re.subn(' sa [aA]n_', ' san ', text)[0]
     text = re.subn(" d[eo] ([fF])h", " d'\g<1>h", text)[0]
     text = re.subn(" de ([aeiouAEIOUáéíóúÁÉÍÓÚ])", " d'\g<1>", text)[0]
     text = re.subn(' i Éire ', ' in Éirinn ', text)[0]
