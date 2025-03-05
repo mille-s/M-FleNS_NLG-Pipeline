@@ -77,6 +77,15 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' i An_', ' ins An ', text)[0]
     text = re.subn(' i ([aeiouáéíóúAEIOUÁÉÍÓÚ])', ' in \g<1>', text)[0]
     text = re.subn(' i [Nn]a ', ' sna ', text)[0]
+    # Remove det when the next NP is probably genitive (restricting to uppercase words to target nouns more safely, but we may be missing some cases this way ).
+    # le+an - leis an (FORGe correctly produces that), but if we remove the "an" here, we need to revert "leis" to "le".
+    text = re.subn(' leis an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' le \g<1> \g<2> \g<3>', text)[0]
+    text = re.subn(' leis an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' le \g<1>_\g<2>_\g<3>', text)[0]
+    # Same for sa
+    text = re.subn(' san* ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' i \g<1> \g<2> \g<3>', text)[0]
+    text = re.subn(' san* ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' i \g<1>_\g<2>_\g<3>', text)[0]
+    text = re.subn(' an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' \g<1> \g<2> \g<3>', text)[0]
+    text = re.subn(' an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' \g<1>_\g<2>_\g<3>', text)[0]
     # Lenition f (+ contraction)
     text = re.subn(' d[eo] ([fF])([^h])', " d'\g<1>h\g<2>", text)[0]
     text = re.subn(" (ar|de|do|faoi|mar|ó|roimh|trí|um|céad) ([bcdfgmptBCDFGMPT])([^hH])", " \g<1> \g<2>h\g<3>", text)[0]
@@ -97,12 +106,6 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' an sé ', ' an é ', text)[0]
     text = re.subn(' an ([aA])n([\s_])', ' \g<1>n\g<2>', text)[0]
     text = re.subn('^An ([aA])n([\s_])', ' An\g<2>', text)[0]
-    # Remove det when the next NP is probably genitive (restricting to uppercase words to target nouns more safely, but we may be missing some cases this way ).
-    # le+an - leis an (FORGe correctly produces that), but if we remove the "an" here, we need to revert "leis" to "le".
-    text = re.subn(' leis an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' le \g<1> \g<2> \g<3>', text)[0]
-    text = re.subn(' leis an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' le \g<1>_\g<2>_\g<3>', text)[0]
-    text = re.subn(' an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' \g<1> \g<2> \g<3>', text)[0]
-    text = re.subn(' an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' \g<1>_\g<2>_\g<3>', text)[0]
     text = re.subn('([0-9]+\s*)meters', '\g<1>méadar', text)[0]
     text = re.subn('([0-9]+_)meters', '\g<1>méadar', text)[0]
     text = re.subn('([0-9]+\s*)minutes', '\g<1>nóiméad', text)[0]
