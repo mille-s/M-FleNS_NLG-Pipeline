@@ -88,6 +88,9 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' san* ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' i \g<1>_\g<2>_\g<3>', text)[0]
     text = re.subn(' an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' \g<1> \g<2> \g<3>', text)[0]
     text = re.subn(' an ([A-Z][^\s]+)_(an|na)_([A-Z][^\s]+)', ' \g<1>_\g<2>_\g<3>', text)[0]
+    # Repeat the 2 lines below because now we introduced a "i" and "le" again with the rules above
+    text = re.subn(' i ([aeiouáéíóúAEIOUÁÉÍÓÚ])', ' in \g<1>', text)[0]
+    text = re.subn(' le [Nn]a ', 'leis na ', text)[0]
     # Lenition f (+ contraction)
     text = re.subn(' d[eo] ([fF])([^h])', " d'\g<1>h\g<2>", text)[0]
     text = re.subn(" (ar|de|do|faoi|mar|ó|roimh|trí|um|céad) ([bcdfgmptBCDFGMPT])([^hH])", " \g<1> \g<2>h\g<3>", text)[0]
