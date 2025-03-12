@@ -78,6 +78,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(' i An_', ' ins An ', text)[0]
     text = re.subn(' i ([aeiouáéíóúAEIOUÁÉÍÓÚ])', ' in \g<1>', text)[0]
     text = re.subn(' i [Nn]a ', ' sna ', text)[0]
+    text = re.subn(' le [Nn]a ', 'leis na ', text)[0]
     # Remove det when the next NP is probably genitive (restricting to uppercase words to target nouns more safely, but we may be missing some cases this way ).
     # le+an - leis an (FORGe correctly produces that), but if we remove the "an" here, we need to revert "leis" to "le".
     text = re.subn(' leis an ([A-Z][^\s]+) (an|na) ([A-Z][^\s]+)', ' le \g<1> \g<2> \g<3>', text)[0]
