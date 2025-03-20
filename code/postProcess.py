@@ -98,11 +98,11 @@ def clean_outputs (text, count, underscores):
     # Eclipsis
     text = re.subn(' (i|leis an) ([bB][^pP])', ' \g<1> m\g<2>', text)[0]
     text = re.subn(' (i|leis an) ([cC])', ' \g<1> g\g<2>', text)[0]
-    text = re.subn(' i ([dD][^tT])', ' \g<1> n\g<2>', text)[0]
+    text = re.subn(' i ([dD][^tT])', ' i n\g<1>', text)[0]
     text = re.subn(' (i|leis an) ([fF])', ' \g<1> bh\g<2>', text)[0]
     text = re.subn(' (i|leis an) ([gG][^cC])', ' \g<1> n\g<2>', text)[0]
     text = re.subn(' (i|leis an) ([pP])', ' \g<1> b\g<2>', text)[0]
-    text = re.subn(' i ([tT])', ' \g<1> d\g<2>', text)[0]
+    text = re.subn(' i ([tT])', ' i d\g<1>', text)[0]
     # text = re.subn(' i ([aeiouáéíóú])', ' i n-\g<1>', text)[0]
     # text = re.subn(' i ([AEIOUÁÉÍÓÚ])', ' i n\g<1>', text)[0]
     # Ugly patches
