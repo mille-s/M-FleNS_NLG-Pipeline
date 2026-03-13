@@ -35,7 +35,7 @@ def collect_files(path):
         new_file_path = os.path.join(folder_path, deeper_content)
         # Collect paths
         if os.path.isfile(new_file_path):
-          if re.search('\.txt', new_file_path):
+          if re.search(r'\.txt', new_file_path):
             list_txt.append(new_file_path)
           else:
             list_str_same_level.append(new_file_path)
@@ -51,5 +51,6 @@ filename_str = os.path.join(split_path, os.path.split(out_folder)[-1]+'.str')
 filename_txt = os.path.join(split_path, '00-Text.txt')
 
 write_file(filename_str, str_to_concatenate)
-if re.search('SMorphText', out_folder):
+if re.search(r'SMorphText', out_folder):
+
   write_file(filename_txt, txt_to_concatenate)
