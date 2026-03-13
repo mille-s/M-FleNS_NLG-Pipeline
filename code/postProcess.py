@@ -116,7 +116,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(r'([0-9]+\s*)minutes', r'\g<1>nóiméad', text)[0]
     text = re.subn(r'([0-9]+_)minutes', r'\g<1>nóiméad', text)[0]
   # Erroneous "type = parenthetical" fix
-  if re.subn(r'\) \(', text):
+  if re.search(r'\) \(', text):
     print('!!! Failed parenthesis generation in input '+str(count)+' (fixed)')
     text = re.subn(r'\) \(', r' ', text)[0]
   # clean quotes that MATE can’t take care of
@@ -170,7 +170,7 @@ def clean_outputs (text, count, underscores):
     text = re.subn(r' square', r' carrés', text)[0]
     
   # find generation fails (we introduce [..] or [...] or [......] when a sentence cannot be generated
-  if re.subn(r'\[\.\.', text):
+  if re.search(r'\[\.\.', text):
     print('!!! Failed sentence generation in input '+str(count))
   # replace underscores by spaces
   if underscores == 'yes':
@@ -184,16 +184,16 @@ def clean_outputs (text, count, underscores):
   text = re.subn(r'\( ', r'(', text)[0]
   text = re.subn(r' ([0-9]+)\.0 kilogram', r' \g<1>kg', text)[0]
   # replace double dots by single ones
-  while re.subn(r'\.\.', text):
+  while re.search(r'\.\.', text):
     text = re.subn(r'\.\.', '.', text)[0]
   text = re.subn(r'% %', r'%', text)[0]
   # Clean remnants of non-generated sentences
   text = re.subn(r'Sentence \[\.\]\.', '', text)[0]
   # Remove initial spaces
-  while re.subn(r'^ ', text):
+  while re.search(r'^ ', text):
     text = re.subn(r'^ ', '', text)[0]
   # New 2023: replace double spaces by single ones
-  while re.subn(r'  ', text):
+  while re.search(r'  ', text):
     text = re.subn(r'  ', r' ', text)[0]
   # reformat date/time
   text = re.subn(r'([0-9]+)-([0-9]+)-([0-9]+)T([0-9]+:[0-9]+:[0-9]+)Z', r'\g<1>/\g<2>/\g<3> at \g<4>', text)[0]
