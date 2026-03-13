@@ -24,7 +24,7 @@ def count_conll(filePath):
   fd = codecs.open(filePath, 'r', 'utf-8')
   lines = fd.readlines()
   for line in lines:
-    if re.search('^0\t_', line):
+    if re.search(r'^0\t_', line):
       counter += 1
   return(counter)
 
@@ -42,7 +42,7 @@ def examine_files(path, count_perLevel):
     # If files are found in the folder, process them
     # Get number of input structures
     if os.path.isfile(file_path):
-      if re.search('\.conll', file_path):
+      if re.search(r'\.conll', file_path):
         count = count_conll(file_path)
         count_perLevel.append(count)
     # If folders are found in the folder, go deeper
@@ -53,7 +53,7 @@ def examine_files(path, count_perLevel):
         new_file_path = os.path.join(file_path, deeper_content)
         # Get number of texts
         if os.path.isfile(new_file_path):
-          if re.search('\.txt', new_file_path):
+          if re.search(r'\.txt', new_file_path):
             count = count_txt(new_file_path)
             count_perLevel.append(count)
             if language == "GA":
@@ -78,7 +78,7 @@ def examine_logs(path, count_perLevel):
         # Sometimes followed by 'ConllSentence', sometimes by 'output'; 'Processing graph' shold be OK.
         if  line.startswith('Processing graph '):
           input_id += 1
-        if re.search('[Ee]rror', line):
+        if re.search(r'[Ee]rror', line):
           # The error message appears on the line after 'Processing graph output', so we append n-1
           dico_log_errors[level_name][input_name].append(input_id-1)
         else:
@@ -132,3 +132,4 @@ print('Outputs per file: ' + str(txt_count_perLevel))
 fo.write('Outputs per file: ' + str(txt_count_perLevel)+'\n')
 
 fo.close()
+
